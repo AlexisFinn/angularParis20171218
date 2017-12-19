@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ItemComponent } from './components/item/item.component';
 import { ListItemsComponent } from './containers/list-items/list-items.component';
+import { AddComponent } from './containers/add/add.component';
 
 
 @NgModule({
@@ -14,11 +15,13 @@ import { ListItemsComponent } from './containers/list-items/list-items.component
   ],
   declarations: [
     ItemComponent,
-    ListItemsComponent
+    ListItemsComponent,
+    AddComponent
   ],
   exports: [
     ItemComponent,
-    ListItemsComponent
+    ListItemsComponent,
+    AddComponent
   ]
 })
 export class ItemsModule { }

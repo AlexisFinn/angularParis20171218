@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { StateDirective } from './directives/state/state.directive';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   declarations: [
     MenuComponent,
-    StateDirective
+    StateDirective,
+    FormComponent
   ],
   exports: [
     MenuComponent,
-    StateDirective
+    StateDirective,
+    FormComponent
   ]
 })
 export class SharedModule { }
