@@ -1,17 +1,17 @@
-<form class="form" #form="ngForm" (ngSubmit)="process()" novalidate>
+<form class="form" [formGroup]="form" (ngSubmit)="process()" novalidate>
 
   <div class="form-group">
-    <input type="text" #nom="ngModel" [(ngModel)]="newItem.name" name="name" class="form-control" placeholder="Nom et prénom" minlength="5" required>
+    <input type="text" formControlName="name" class="form-control" placeholder="Nom et prénom">
   </div>
-  <div class="alert alert-danger" *ngIf="nom.invalid && nom.touched">champ invalide</div>
+  <div class="alert alert-danger" *ngIf="isError('name')">champ invalide</div>
 
   <div class="form-group">
-    <input type="text" #ref="ngModel" [(ngModel)]="newItem.reference" name="ref" class="form-control" placeholder="Référence ex : 1245" minlength="4" required>
+    <input type="text" formControlName="ref" class="form-control" placeholder="Référence ex : 1245">
   </div>
-  <div class="alert alert-danger" *ngIf="ref.invalid && ref.touched">champ invalide</div>
+  <div class="alert alert-danger" *ngIf="isError('ref')">champ invalide</div>
 
   <div class="form-group">
-    <select [(ngModel)]="newItem.state" class="form-control" name="state">
+    <select class="form-control" formControlName="state">
       <option [ngValue]="state.ALIVRER">A livrer</option>
       <option [ngValue]="state.ENCOURS">En cours</option>
       <option [ngValue]="state.LIVREE">Livrée</option>

@@ -9,6 +9,7 @@ import { ItemsModule } from './items/items.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { CollectionService } from './core/services/collection/collection.service';
 
 @NgModule({
   imports: [
@@ -23,7 +24,9 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [
+    CollectionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
