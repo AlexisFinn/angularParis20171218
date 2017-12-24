@@ -1,4 +1,4 @@
-import { Directive, Input, OnChanges, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, Input, OnChanges, HostBinding } from '@angular/core';
 import { State } from '../../enums/state.enum';
 
 @Directive({
@@ -7,28 +7,13 @@ import { State } from '../../enums/state.enum';
 export class StateDirective implements OnChanges {
 
   @Input('appState') appState;
-  constructor(private _ElementRef: ElementRef, private _Renderer2: Renderer2) { }
+  @HostBinding('class') elementClass: string;
+  @HostBinding('textContent') elementText: string;
+
+  constructor() { }
 
   ngOnChanges(): void {
-    console.log(this.appState);
-    const ElementNode = this._ElementRef.nativeElement;
-    const cssClass = `state-${this.appState}`;
-    let text: string;
-    switch (this.appState) {
-      case State.ALIVRER:
-      text = 'A livrer';
-      break;
-      case State.ENCOURS:
-      text = 'En cours';
-      break;
-      case State.LIVREE:
-      text = 'Commande livrée';
-      break;
-      default:
-      console.log(this.appState);
-    }
-    this._Renderer2.addClass(ElementNode, cssClass);
-    ElementNode.textContent = text;
+    this.elementClass = `state-${this.appState}`;
+    this.elementText = State.label(this.appState);
   }
-
 }

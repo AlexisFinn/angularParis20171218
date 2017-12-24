@@ -10,8 +10,8 @@ import { ItemId } from '../../../shared/interfaces/item-id.model';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
-  state = State;
   @Input('item') item: Item;
+  state = State;
   constructor(private _CollectionService: CollectionService) { }
 
   ngOnInit() {
