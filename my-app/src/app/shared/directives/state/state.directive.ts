@@ -12,8 +12,19 @@ export class StateDirective implements OnChanges {
 
   constructor() { }
 
+  private removeAccents(state: string): string {
+    // https://stackoverflow.com/a/37511463
+    return state.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  private formatCssClass(state: string): string {
+    return `state-${this.removeAccents(state)
+      .toLowerCase()
+      .replace(' ', '')}`;
+  }
+
   ngOnChanges(): void {
-    this.elementClass = `state-${this.appState}`;
-    this.elementText = State.label(this.appState);
+    this.elementClass = this.formatCssClass(this.appState);
+    this.elementText = this.appState;
   }
 }

@@ -5,8 +5,8 @@
   <div class="card-body">
     <h4 class="card-title">{{ item.name }}</h4>
     <p class="card-text">{{ item.reference }}</p>
-    <button class="btn btn-primary" *ngIf="state.ALIVRER == item.state" (click)="changeState(state.ENCOURS)">{{ state.label(state.ENCOURS) }}</button>
-    <button class="btn btn-primary" *ngIf="state.ENCOURS == item.state" (click)="changeState(state.LIVREE)">{{ state.label(state.LIVREE) }}</button>
+    <button class="btn btn-primary" *ngIf="state.ALIVRER == item.state" (click)="changeState(state.ENCOURS)">{{ state.ENCOURS }}</button>
+    <button class="btn btn-primary" *ngIf="state.ENCOURS == item.state" (click)="changeState(state.LIVREE)">{{ state.LIVREE }}</button>
   </div>
 </div>
 

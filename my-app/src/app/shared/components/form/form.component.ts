@@ -9,12 +9,15 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+
   state = State;
   form: FormGroup;
   nameCtrl: FormControl;
   refCtrl: FormControl;
   stateCtrl: FormControl;
+  stateLibelles = Object.values(State);
   @Output() dataItem: EventEmitter<Item> = new EventEmitter();
+
   constructor(private _FormBuilder: FormBuilder) {
     this.nameCtrl = this._FormBuilder.control('', [
       Validators.required,
@@ -52,5 +55,4 @@ export class FormComponent implements OnInit {
   isError(champ: string) {
     return this.form.get(champ).dirty && this.form.get(champ).hasError('minlength');
   }
-
 }

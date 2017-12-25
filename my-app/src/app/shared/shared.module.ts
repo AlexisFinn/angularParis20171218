@@ -8,6 +8,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './components/menu/menu.component';
 import { StateDirective } from './directives/state/state.directive';
 import { FormComponent } from './components/form/form.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FormComponent } from './components/form/form.component';
   declarations: [
     MenuComponent,
     StateDirective,
-    FormComponent
+    FormComponent,
+    ModalComponent
   ],
   exports: [
     MenuComponent,

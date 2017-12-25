@@ -12,9 +12,7 @@
 
   <div class="form-group">
     <select class="form-control" formControlName="state">
-      <option [ngValue]="state.ALIVRER">A livrer</option>
-      <option [ngValue]="state.ENCOURS">En cours</option>
-      <option [ngValue]="state.LIVREE">Livrée</option>
+      <option *ngFor="let libelle of stateLibelles" [ngValue]="libelle">{{ libelle }}</option>
     </select>
   </div>
 
