@@ -30,23 +30,17 @@ export class FormComponent implements OnInit {
 
     this.form = this._FormBuilder.group({
       name : this.nameCtrl,
-      ref: this.refCtrl,
+      reference: this.refCtrl,
       state: this.stateCtrl
     });
   }
 
-
   ngOnInit() {
-
   }
 
   process(): void {
-    console.log(this.form.value);
-    this.dataItem.emit({
-      name: this.form.get('name').value,
-      reference: this.form.get('ref').value,
-      state: this.stateCtrl.value
-    });
+    const data = this.form.value as Item;
+    this.dataItem.emit(data);
     this.reset();
   }
 

@@ -6,7 +6,7 @@ import { State } from '../../enums/state.enum';
 })
 export class StateDirective implements OnChanges {
 
-  @Input('appState') appState;
+  @Input('appState') appState: State;
   @HostBinding('class') elementClass: string;
   @HostBinding('textContent') elementText: string;
 

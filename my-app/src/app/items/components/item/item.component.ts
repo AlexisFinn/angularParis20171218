@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Item } from '../../../shared/interfaces/item.model';
 import { State } from '../../../shared/enums/state.enum';
 import { CollectionService } from '../../../core/services/collection/collection.service';
-import { ItemId } from '../../../shared/interfaces/item-id.model';
 
 @Component({
   selector: 'app-item',
@@ -17,8 +17,8 @@ export class ItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeState(item: ItemId, newState: State) {
-    this._CollectionService.update(item, newState);
+  changeState(newState: State) {
+    this.item.state = newState;
+    this._CollectionService.update(this.item);
   }
-
 }

@@ -1,48 +1,43 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
-import { COLLECTION } from '../../../items/collection';
 import { Item } from '../../../shared/interfaces/item.model';
-
-import * as firebase from 'firebase/app';
 import { State } from '../../../shared/enums/state.enum';
-import { ItemId } from '../../../shared/interfaces/item-id.model';
 
 @Injectable()
 export class CollectionService {
   private itemsCollection: AngularFirestoreCollection<Item>;
-  collection: Observable<ItemId[]>;
+  private collection$: Observable<Item[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.getCollection();
-    // this.collection.subscribe(data => console.log(data));
+    this.itemsCollection = this.afs.collection<Item>('collection');
+    this.setCollection(this.itemsCollection.valueChanges());
   }
 
   // get collection
-  getCollection() {
-    this.itemsCollection = this.afs.collection<Item>('collection');
-    return this.collection = this.itemsCollection.snapshotChanges().map(document => {
-      return document.map(prop => {
-        const data = prop.payload.doc.data() as Item;
-        const id = prop.payload.doc.id;
-        return { id, ...data };
-      });
-    });
+  getCollection(): Observable<Item[]> {
+    return this.collection$;
+  }
+
+  // set collection
+  setCollection(collection: Observable<Item[]>): void {
+    this.collection$ = collection;
   }
 
   // add Item in collection
-  addItem(item: Item) {
-    // this.collection.push(item);
+  addItem(item: Item): void {
+    item.id = this.afs.createId();
+    this.itemsCollection.doc(item.id).set(item)
+      .catch(error => console.log(error));
   }
 
   // update Item in collection
-  update(item: ItemId, newState: State) {
-    item.state = newState;
-    this.afs.doc<Item>(`collection/${item.id}`);
-    // ajout dans la collection avec un id
+  update(item: Item): void {
+    this.itemsCollection.doc(item.id).update(item)
+      .catch(error => console.log(error));
   }
 
   // delete Item in collection
-  delete() {}
+  delete(): void {}
 }
