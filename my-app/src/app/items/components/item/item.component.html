@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-header">
     <span [appState]="item.state"></span>
+    <button class="btn btn-danger float-right" (click)="process()"><span class="icon-trash-o"></span></button>
   </div>
   <div class="card-body">
     <h4 class="card-title">{{ item.name }}</h4>

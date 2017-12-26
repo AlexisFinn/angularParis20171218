@@ -34,5 +34,9 @@ export class CollectionService {
       .catch(error => console.log(error));
   }
 
-  delete(): void {}
+  delete(item: Item): void {
+    this.itemsCollection.doc(item.id).delete()
+      .catch(error => console.log(error));
+  }
 }
+

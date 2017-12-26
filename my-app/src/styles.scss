@@ -3,3 +3,15 @@
 .form {
   margin-top: 1rem;
 }
+
+.card:last-child {
+  margin-bottom: 1rem;
+}
+
+body {
+  background: rgb(94, 94, 94);
+}
+
+button:hover {
+  cursor: pointer;
+}

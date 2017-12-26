@@ -12,20 +12,8 @@ export class ModalComponent implements OnInit {
   @Input() title: string;
   @Input() msg: string;
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    private modalService: ModalService
-  ) {}
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
-  }
-
-  confirm(): void {
-    this.activeModal.close();
-    this.modalService.validation$.next(true);
-  }
-
-  cancel() {
-    this.activeModal.close();
   }
 }

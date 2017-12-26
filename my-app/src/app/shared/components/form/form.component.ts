@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   @Output() dataItem: EventEmitter<Item> = new EventEmitter();
 
   constructor(private _FormBuilder: FormBuilder) {
+
     this.nameCtrl = this._FormBuilder.control('', [
       Validators.required,
       Validators.minLength(5)
@@ -42,8 +43,7 @@ export class FormComponent implements OnInit {
   }
 
   process(): void {
-    const data = this.form.value as Item;
-    this.dataItem.emit(data);
+    this.dataItem.emit(this.form.value as Item);
     this.reset();
   }
 
@@ -55,4 +55,5 @@ export class FormComponent implements OnInit {
   isError(champ: string) {
     return this.form.get(champ).dirty && this.form.get(champ).hasError('minlength');
   }
+
 }

@@ -1,22 +1,31 @@
-<form class="form" [formGroup]="form" (ngSubmit)="process()" novalidate>
+<div class="card">
+    <div class="card-header">
+      <span>Ajouter une commande</span>
+    </div>
+    <div class="card-body">
+      <form class="form" [formGroup]="form" (ngSubmit)="process()" novalidate>
 
-  <div class="form-group">
-    <input type="text" formControlName="name" class="form-control" placeholder="Nom et prénom">
-  </div>
-  <div class="alert alert-danger" *ngIf="isError('name')">champ invalide</div>
+        <div class="form-group">
+          <input type="text" formControlName="name" class="form-control form-control-lg" placeholder="Nom et prénom">
+        </div>
+        <div class="alert alert-danger" *ngIf="isError('name')">champ invalide</div>
 
-  <div class="form-group">
-    <input type="text" formControlName="reference" class="form-control" placeholder="Référence ex : 1245">
-  </div>
-  <div class="alert alert-danger" *ngIf="isError('reference')">champ invalide</div>
+        <div class="form-group">
+          <input type="text" formControlName="reference" class="form-control form-control-lg" placeholder="Référence ex : 1245">
+        </div>
+        <div class="alert alert-danger" *ngIf="isError('reference')">champ invalide</div>
 
-  <div class="form-group">
-    <select class="form-control" formControlName="state">
-      <option *ngFor="let libelle of stateLibelles" [ngValue]="libelle">{{ libelle }}</option>
-    </select>
+        <div class="form-group">
+          <select class="form-control form-control-lg" formControlName="state">
+            <option *ngFor="let libelle of stateLibelles" [ngValue]="libelle">{{ libelle }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+
+      </form>
+    </div>
   </div>
 
-  <div class="form-group">
-    <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</form>

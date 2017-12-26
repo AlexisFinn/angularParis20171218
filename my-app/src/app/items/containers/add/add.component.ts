@@ -1,12 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { CollectionService } from '../../../core/services/collection/collection.service';
-import { ModalService } from '../../../core/services/modal/modal.service';
 
 import { Item } from '../../../shared/interfaces/item.model';
+import { ModalService } from '../../../core/services/modal/modal.service';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
@@ -14,34 +12,31 @@ import { ModalComponent } from '../../../shared/components/modal/modal.component
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit, OnDestroy {
+export class AddComponent implements OnInit {
 
-  private validation$: BehaviorSubject<Boolean>;
 
   constructor(
     private collectionService: CollectionService,
     private router: Router,
-    private ngbModalService: NgbModal,
     private modalService: ModalService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.validation$ = this.modalService.validation$;
   }
 
-  addItem(item: Item): void {
-    const modalRef = this.ngbModalService.open(ModalComponent);
-    modalRef.componentInstance.title = 'Confirmation';
-    modalRef.componentInstance.msg = 'Voulez vous vraiment ajouter cette commande ?';
-    this.validation$.subscribe(res => {
-      if (res) {
-        this.collectionService.addItem(item);
-        this.router.navigate(['/list']);
+  process(item: Item): void {
+    this.modalService.createModal('Confirmation', 'Voulez vous ajouter cette commande ?', ModalComponent).then((result) => {
+      // console.log(result); // if click cancel btn
+    }, (reason) => {
+      // console.log(reason); // return Confirm Click if click confirm btn, 0 if ESC key and 1 if click outside the modal
+      if (reason !== 0 && reason !== 1) {
+        this.addItem(item);
       }
     });
   }
 
-  ngOnDestroy(): void {
-    this.validation$.unsubscribe();
+  addItem(item: Item): void {
+    this.collectionService.addItem(item);
+    this.router.navigate(['/list']);
   }
 }
