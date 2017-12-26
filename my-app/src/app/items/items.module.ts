@@ -21,11 +21,6 @@ import { ModalComponent } from '../shared/components/modal/modal.component';
     ListItemsComponent,
     AddComponent
   ],
-  exports: [
-    ItemComponent,
-    ListItemsComponent,
-    AddComponent
-  ],
   entryComponents: [
     ModalComponent
   ]

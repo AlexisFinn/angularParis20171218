@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CollectionService } from '../../../core/services/collection/collection.service';
+import { ModalService } from '../../../core/services/modal/modal.service';
 
 import { Item } from '../../../shared/interfaces/item.model';
-import { ModalService } from '../../../core/services/modal/modal.service';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
@@ -13,8 +13,6 @@ import { ModalComponent } from '../../../shared/components/modal/modal.component
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-
-
   constructor(
     private collectionService: CollectionService,
     private router: Router,
@@ -37,6 +35,6 @@ export class AddComponent implements OnInit {
 
   addItem(item: Item): void {
     this.collectionService.addItem(item);
-    this.router.navigate(['/list']);
+    this.router.navigate(['/items']);
   }
 }
