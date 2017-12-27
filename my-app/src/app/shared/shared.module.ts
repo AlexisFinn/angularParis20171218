@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { StateDirective } from './directives/state/state.directive';
 import { FormComponent } from './components/form/form.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -22,12 +23,14 @@ import { ModalComponent } from './components/modal/modal.component';
     MenuComponent,
     StateDirective,
     FormComponent,
-    ModalComponent
+    ModalComponent,
+    PaginationComponent
   ],
   exports: [
     MenuComponent,
     StateDirective,
-    FormComponent
+    FormComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

@@ -1,5 +1,11 @@
-<div class="container">
-  <ng-container *ngFor="let item of collection$ | async">
+<div class="container" *ngIf="collection$ | async as collection">
+
+  <app-pagination [collectionSize]="collection.length" [page]="page" [maxSize]="maxSize" [pageSize]="pageSize" [rotate]="rotate" [ellipses]="ellipses" [boundaryLinks]="boundaryLinks" (doNumPage)="changePage($event)"></app-pagination>
+
+  <ng-container *ngFor="let item of collection.slice(startIndex, startIndex + pageSize)">
     <app-item [item]="item"></app-item>
   </ng-container>
+
+  <app-pagination [collectionSize]="collection.length" [page]="page" [maxSize]="maxSize" [pageSize]="pageSize" [rotate]="rotate" [ellipses]="ellipses" [boundaryLinks]="boundaryLinks" (doNumPage)="changePage($event)"></app-pagination>
+
 </div>

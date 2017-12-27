@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ItemsRoutingModule } from './items-routing.module';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { ItemComponent } from './components/item/item.component';
 import { ListItemsComponent } from './containers/list-items/list-items.component';
 import { AddComponent } from './containers/add/add.component';
@@ -15,7 +17,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     RouterModule,
-    ItemsRoutingModule
+    ItemsRoutingModule,
+    NgbModule
   ],
   declarations: [
     ItemComponent,

@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-header">
     <span [appState]="item.state"></span>
-    <button class="btn btn-danger float-right" (click)="process()"><span class="icon-trash-o"></span></button>
-    <a class="btn btn-primary float-right" [routerLink]="['/items/edit', item.id]"><span class="icon-pencil-square"></span></a>
+    <button class="btn btn-danger float-right" (click)="process()" placement="bottom" ngbTooltip="Supprimer"><span class="icon-trash-o"></span></button>
+    <a class="btn btn-primary float-right" [routerLink]="['/items/edit', item.id]" placement="bottom" ngbTooltip="Modifier"><span class="icon-pencil-square"></span></a>
   </div>
   <div class="card-body">
     <h4 class="card-title">{{ item.name }}</h4>
