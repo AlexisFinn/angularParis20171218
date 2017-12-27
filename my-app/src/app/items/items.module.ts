@@ -7,22 +7,21 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { ItemComponent } from './components/item/item.component';
 import { ListItemsComponent } from './containers/list-items/list-items.component';
 import { AddComponent } from './containers/add/add.component';
-import { ModalComponent } from '../shared/components/modal/modal.component';
-
+import { EditComponent } from './containers/edit/edit.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    RouterModule,
     ItemsRoutingModule
   ],
   declarations: [
     ItemComponent,
     ListItemsComponent,
-    AddComponent
-  ],
-  entryComponents: [
-    ModalComponent
+    AddComponent,
+    EditComponent
   ]
 })
 export class ItemsModule { }

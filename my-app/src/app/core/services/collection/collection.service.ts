@@ -29,6 +29,10 @@ export class CollectionService {
       .catch(error => console.log(error));
   }
 
+  getItem(id: string): Observable<Item> {
+    return this.afs.doc<Item>(`collection/${id}`).valueChanges();
+  }
+
   update(item: Item): void {
     this.itemsCollection.doc(item.id).update(item)
       .catch(error => console.log(error));

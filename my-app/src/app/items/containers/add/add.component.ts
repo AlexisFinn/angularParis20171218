@@ -13,6 +13,8 @@ import { ModalComponent } from '../../../shared/components/modal/modal.component
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
+  titleForm: string;
+
   constructor(
     private collectionService: CollectionService,
     private router: Router,
@@ -20,6 +22,7 @@ export class AddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.titleForm = 'Ajouter une commande';
   }
 
   process(item: Item): void {
