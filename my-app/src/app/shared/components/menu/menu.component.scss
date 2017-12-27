@@ -3,4 +3,7 @@ nav {
   top: 0;
   z-index: 10;
   margin-bottom: 1rem;
+  .active {
+    color: rgb(0, 81, 255) !important;
+  }
 }
