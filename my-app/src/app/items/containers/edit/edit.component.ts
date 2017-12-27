@@ -14,8 +14,8 @@ import { ModalComponent } from '../../../shared/components/modal/modal.component
 })
 export class EditComponent implements OnInit {
   titleForm: string; // dynamique title get by formComponent  with an @Input()
-  item$: Observable<Item>; // CollectionService.getItem() return an Observable
-
+  // item$: Observable<Item>; // get by CollectionService.getItem(id) <-- in case add
+  item: Item; // get by ngOnInit <-- in case edit
   id: string; // get existing id in ngOnInit()
 
   constructor(
@@ -26,14 +26,16 @@ export class EditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.item$ = this.collectionService.getItem(this.id);
+    // this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    // this.item$ = this.collectionService.getItem(this.id);
     this.titleForm = 'Modifier une commande';
+    this.activatedRoute.data.subscribe(data => this.item = data['item']); // get by ItemDetailResolverService in case edit
   }
 
   process(item: Item): void {
     this.modalService.createModal('Confirmation', 'Valider les modifications ?', ModalComponent).then((result) => {
       // console.log(result); // if click cancel btn
+      this.router.navigate(['/items']);
     }, (reason) => {
       // console.log(reason); // return Confirm Click if click confirm btn, 0 if ESC key and 1 if click outside the modal
       if (reason !== 0 && reason !== 1) {

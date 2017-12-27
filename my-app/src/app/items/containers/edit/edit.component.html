@@ -1,3 +1,4 @@
 <div class="container">
-  <app-form (dataItem)="process($event)" *ngIf="item$ | async as item" [item]="item" [titleForm]="titleForm"></app-form>
+  <!-- <app-form (dataItem)="process($event)" *ngIf="item$ | async as item" [item]="item" [titleForm]="titleForm"></app-form> -->
+  <app-form (dataItem)="process($event)" *ngIf="item" [item]="item" [titleForm]="titleForm"></app-form>
 </div>

@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ModalService } from './core/services/modal/modal.service';
 import { CollectionService } from './core/services/collection/collection.service';
+import { ItemDetailResolverService } from './core/services/item-detail-resolver/item-detail-resolver.service';
 
 import { environment } from '../environments/environment.prod';
 
@@ -40,7 +41,8 @@ import { AppComponent } from './app.component';
   ],
   providers: [
     CollectionService,
-    ModalService
+    ModalService,
+    ItemDetailResolverService
   ],
   bootstrap: [AppComponent]
 })
